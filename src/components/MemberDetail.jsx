@@ -10,6 +10,19 @@ function getMemberKPI(memberId, themes) {
   return { total, success, rate, themes: participated };
 }
 
+function getStatusClass(status) {
+  if (!status || status === '활동중') return 'active';
+  if (status.startsWith('퇴사')) return 'resigned';
+  return 'quit';
+}
+
+function getScaredClass(isScared) {
+  if (isScared === '쫄') return 'jjol';
+  if (isScared === '탱') return 'tank';
+  if (isScared === '쫄탱') return 'both';
+  return 'unknown';
+}
+
 export default function MemberDetail() {
   const { state, dispatch } = useApp();
   const [confirm, setConfirm] = useState(false);
@@ -28,6 +41,47 @@ export default function MemberDetail() {
         </button>
         <h1>{member.name}</h1>
       </header>
+
+      <div className="member-info-section">
+        {member.team && (
+          <div className="member-info-row">
+            <span className="member-info-label">팀</span>
+            <span className="member-info-value">{member.team}</span>
+          </div>
+        )}
+        {member.joinDate && (
+          <div className="member-info-row">
+            <span className="member-info-label">가입시기</span>
+            <span className="member-info-value">{member.joinDate}</span>
+          </div>
+        )}
+        {member.role && (
+          <div className="member-info-row">
+            <span className="member-info-label">역할</span>
+            <span className="member-info-value">{member.role}</span>
+          </div>
+        )}
+        <div className="member-info-row">
+          <span className="member-info-label">상태</span>
+          <span className={`member-status ${getStatusClass(member.status)}`}>
+            {member.status || '활동중'}
+          </span>
+        </div>
+        {member.isScared && (
+          <div className="member-info-row">
+            <span className="member-info-label">쫄탱</span>
+            <span className={`scared-badge ${getScaredClass(member.isScared)}`}>
+              {member.isScared === '?' ? '모름' : member.isScared}
+            </span>
+          </div>
+        )}
+        {member.note && (
+          <div className="member-info-row">
+            <span className="member-info-label">비고</span>
+            <span className="member-info-value">{member.note}</span>
+          </div>
+        )}
+      </div>
 
       <div className="stats-row">
         <div className="stat-card">

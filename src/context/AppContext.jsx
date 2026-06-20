@@ -2,8 +2,9 @@ import { createContext, useContext, useReducer, useEffect } from 'react';
 import { DEFAULT_CATEGORIES, DEFAULT_LOCATIONS, SAMPLE_THEMES, SAMPLE_MEMBERS } from '../data/initialData';
 
 const AppContext = createContext(null);
-const STORAGE_KEY = 'escaperoom_club_v2';
-const LEGACY_KEY  = 'escaperoom_club_v1';
+const STORAGE_KEY   = 'escaperoom_club_v3';
+const LEGACY_KEY_V2 = 'escaperoom_club_v2';
+const LEGACY_KEY_V1 = 'escaperoom_club_v1';
 
 function migrateV1(v1) {
   return {
@@ -27,17 +28,41 @@ function migrateV1(v1) {
   };
 }
 
+function migrateV2(v2) {
+  return {
+    ...v2,
+    members: (v2.members ?? []).map(m => ({
+      ...m,
+      team:     m.team     ?? '',
+      joinDate: m.joinDate ?? '',
+      role:     m.role     ?? '',
+      status:   m.status   ?? '활동중',
+      isScared: m.isScared ?? '?',
+      note:     m.note     ?? '',
+    })),
+  };
+}
+
 function loadSaved() {
   try {
-    const v1raw = localStorage.getItem(LEGACY_KEY);
-    const v2raw = localStorage.getItem(STORAGE_KEY);
-    if (v1raw && !v2raw) {
-      const migrated = migrateV1(JSON.parse(v1raw));
+    const v3raw = localStorage.getItem(STORAGE_KEY);
+    if (v3raw) return JSON.parse(v3raw);
+
+    const v2raw = localStorage.getItem(LEGACY_KEY_V2);
+    if (v2raw) {
+      const migrated = migrateV2(JSON.parse(v2raw));
       localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
-      localStorage.removeItem(LEGACY_KEY);
+      localStorage.removeItem(LEGACY_KEY_V2);
       return migrated;
     }
-    if (v2raw) return JSON.parse(v2raw);
+
+    const v1raw = localStorage.getItem(LEGACY_KEY_V1);
+    if (v1raw) {
+      const migrated = migrateV2(migrateV1(JSON.parse(v1raw)));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+      localStorage.removeItem(LEGACY_KEY_V1);
+      return migrated;
+    }
   } catch {}
   return null;
 }
@@ -99,7 +124,16 @@ function reducer(state, action) {
       return { ...state, themes: state.themes.filter(t => t.id !== action.id), view: 'themes', selectedId: null };
 
     case 'ADD_MEMBER': {
-      const member = { id: `member-${Date.now()}`, name: action.name };
+      const member = {
+        id:       `member-${Date.now()}`,
+        name:     action.name,
+        team:     action.team     ?? '',
+        joinDate: action.joinDate ?? '',
+        role:     action.role     ?? '',
+        status:   action.status   ?? '활동중',
+        isScared: action.isScared ?? '?',
+        note:     action.note     ?? '',
+      };
       return { ...state, members: [...state.members, member], view: 'members' };
     }
 
