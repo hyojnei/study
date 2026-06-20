@@ -26,8 +26,8 @@ export default function MemberList() {
       ) : (
         <div className="card-list">
           {sorted.map(member => {
-            const themes = state.themes.filter(t => t.memberIds.includes(member.id));
-            const cleared = themes.filter(t => t.cleared).length;
+            const themes = state.themes.filter(t => t.participants.includes(member.id));
+            const cleared = themes.filter(t => t.isSuccess).length;
             return (
               <div
                 key={member.id}

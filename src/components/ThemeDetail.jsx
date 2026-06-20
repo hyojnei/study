@@ -11,7 +11,7 @@ export default function ThemeDetail() {
   const theme = state.themes.find(t => t.id === state.selectedId);
   if (!theme) return null;
 
-  const participants = state.members.filter(m => theme.memberIds.includes(m.id));
+  const participants = state.members.filter(m => theme.participants.includes(m.id));
 
   const handleDelete = () => {
     dispatch({ type: 'DELETE_THEME', id: theme.id });

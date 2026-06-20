@@ -10,10 +10,10 @@ export default function MemberDetail() {
   if (!member) return null;
 
   const themes = state.themes
-    .filter(t => t.memberIds.includes(member.id))
+    .filter(t => t.participants.includes(member.id))
     .sort((a, b) => b.date.localeCompare(a.date));
 
-  const cleared = themes.filter(t => t.cleared).length;
+  const cleared = themes.filter(t => t.isSuccess).length;
   const rate = themes.length > 0 ? Math.round((cleared / themes.length) * 100) : 0;
 
   return (
