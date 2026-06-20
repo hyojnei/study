@@ -50,95 +50,95 @@ export const SAMPLE_MEMBERS = [
 
 export const SAMPLE_THEMES = [
   // 회차 2 — 2024-11-06 강남
-  { id: 't001', themeName: '대호시장 살인사건',           cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat01', date: '2024-11-06', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m04','m28','m05','m06'] },
-  { id: 't002', themeName: '메이데이',                    cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat02', date: '2024-11-06', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m14','m08'] },
-  { id: 't003', themeName: '마음을 그려드립니다(마그다)', cafeName: '비트포비아 강남던전2',         location: '강남', category: 'cat11', date: '2024-11-06', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m09','m10','m01'] },
-  { id: 't004', themeName: '로스트킹덤:대탐험의시작',     cafeName: '비트포비아 강남던전2',         location: '강남', category: 'cat06', date: '2024-11-06', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m29','m11','m03','m02'] },
+  { id: 't001', themeName: '대호시장 살인사건',           cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat01', date: '2024-11-06', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m04','m28','m05','m06'] },
+  { id: 't002', themeName: '메이데이',                    cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat02', date: '2024-11-06', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m14','m08'] },
+  { id: 't003', themeName: '마음을 그려드립니다(마그다)', cafeName: '비트포비아 강남던전2',         location: '강남', category: 'cat11', date: '2024-11-06', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m09','m10','m01'] },
+  { id: 't004', themeName: '로스트킹덤:대탐험의시작',     cafeName: '비트포비아 강남던전2',         location: '강남', category: 'cat06', date: '2024-11-06', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m29','m11','m03','m02'] },
 
   // 회차 4 — 2025-01-09 홍대
-  { id: 't005', themeName: '라스트코어',                  cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat02', date: '2025-01-09', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m09','m14','m03','m01'] },
-  { id: 't006', themeName: '스텔라',                      cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat03', date: '2025-01-09', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m08','m13','m12','m05'] },
-  { id: 't007', themeName: '섀도우',                      cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat05', date: '2025-01-09', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m01','m02','m07','m10','m11'] },
+  { id: 't005', themeName: '라스트코어',                  cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat02', date: '2025-01-09', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m09','m14','m03','m01'] },
+  { id: 't006', themeName: '스텔라',                      cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat03', date: '2025-01-09', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m08','m13','m12','m05'] },
+  { id: 't007', themeName: '섀도우',                      cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat05', date: '2025-01-09', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m01','m02','m07','m10','m11'] },
 
   // 회차 5 — 2025-02-13 강남
-  { id: 't008', themeName: '태초의신부',                  cafeName: '판타스트릭 강남1점',           location: '강남', category: 'cat03', date: '2025-02-13', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m11','m14','m01'] },
-  { id: 't009', themeName: '데스티니앤드타로',            cafeName: '비트포비아 던전스텔라',        location: '강남', category: 'cat03', date: '2025-02-13', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m03','m02','m08','m09'] },
-  { id: 't010', themeName: '귀문기담',                    cafeName: '에피소드 강남점',              location: '강남', category: 'cat04', date: '2025-02-13', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m10','m12','m06'] },
+  { id: 't008', themeName: '태초의신부',                  cafeName: '판타스트릭 강남1점',           location: '강남', category: 'cat03', date: '2025-02-13', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m11','m14','m01'] },
+  { id: 't009', themeName: '데스티니앤드타로',            cafeName: '비트포비아 던전스텔라',        location: '강남', category: 'cat03', date: '2025-02-13', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m03','m02','m08','m09'] },
+  { id: 't010', themeName: '귀문기담',                    cafeName: '에피소드 강남점',              location: '강남', category: 'cat04', date: '2025-02-13', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m10','m12','m06'] },
 
   // 회차 6 — 2025-03-13 홍대
-  { id: 't011', themeName: '업사이드다운',                cafeName: '오아시스뮤지엄',               location: '홍대', category: 'cat06', date: '2025-03-13', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m11','m14','m03','m01'] },
-  { id: 't012', themeName: '미씽삭스미스터리',            cafeName: '오아시스뮤지엄',               location: '홍대', category: 'cat03', date: '2025-03-13', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m10','m02'] },
-  { id: 't013', themeName: '배드타임',                    cafeName: '오아시스뮤지엄',               location: '홍대', category: 'cat04', date: '2025-03-13', difficulty: 4, fearLevel: 3,    isSuccess: false, notes: '', participants: ['m09','m13','m06'] },
+  { id: 't011', themeName: '업사이드다운',                cafeName: '오아시스뮤지엄',               location: '홍대', category: 'cat06', date: '2025-03-13', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m11','m14','m03','m01'] },
+  { id: 't012', themeName: '미씽삭스미스터리',            cafeName: '오아시스뮤지엄',               location: '홍대', category: 'cat03', date: '2025-03-13', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m10','m02'] },
+  { id: 't013', themeName: '배드타임',                    cafeName: '오아시스뮤지엄',               location: '홍대', category: 'cat04', date: '2025-03-13', difficulty: 4, fearLevel: 3,    isSuccess: true, notes: '', participants: ['m09','m13','m06'] },
 
   // 회차 7 — 2025-04-10 강남
-  { id: 't014', themeName: '백투더씬',                    cafeName: '키이스케이프',                 location: '강남', category: 'cat01', date: '2025-04-10', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m03','m02'] },
-  { id: 't015', themeName: '아이엠',                      cafeName: '제로월드',                     location: '강남', category: 'cat04', date: '2025-04-10', difficulty: 3, fearLevel: 1,    isSuccess: false, notes: '', participants: ['m06','m09','m04','m05'] },
-  { id: 't016', themeName: '악마와싸우는자',              cafeName: '겟어웨이',                     location: '강남', category: 'cat04', date: '2025-04-10', difficulty: 2, fearLevel: 1,    isSuccess: false, notes: '', participants: ['m01','m10','m14'] },
+  { id: 't014', themeName: '백투더씬',                    cafeName: '키이스케이프',                 location: '강남', category: 'cat01', date: '2025-04-10', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m03','m02'] },
+  { id: 't015', themeName: '아이엠',                      cafeName: '제로월드',                     location: '강남', category: 'cat04', date: '2025-04-10', difficulty: 3, fearLevel: 1,    isSuccess: true, notes: '', participants: ['m06','m09','m04','m05'] },
+  { id: 't016', themeName: '악마와싸우는자',              cafeName: '겟어웨이',                     location: '강남', category: 'cat04', date: '2025-04-10', difficulty: 2, fearLevel: 1,    isSuccess: true, notes: '', participants: ['m01','m10','m14'] },
 
   // 회차 8 — 2025-05-08 홍대
-  { id: 't017', themeName: '퀘스천마크',                  cafeName: '퀘스천마크 홍대',              location: '홍대', category: 'cat05', date: '2025-05-08', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m03','m15','m10'] },
-  { id: 't018', themeName: '즐거운나의집',                cafeName: '위욜',                         location: '홍대', category: 'cat04', date: '2025-05-08', difficulty: 4, fearLevel: 3,    isSuccess: false, notes: '', participants: ['m01','m09','m14','m16'] },
+  { id: 't017', themeName: '퀘스천마크',                  cafeName: '퀘스천마크 홍대',              location: '홍대', category: 'cat05', date: '2025-05-08', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m03','m15','m10'] },
+  { id: 't018', themeName: '즐거운나의집',                cafeName: '위욜',                         location: '홍대', category: 'cat04', date: '2025-05-08', difficulty: 4, fearLevel: 3,    isSuccess: true, notes: '', participants: ['m01','m09','m14','m16'] },
 
   // 회차 9 — 2025-06-12 강남
-  { id: 't019', themeName: '링',                          cafeName: '제로월드 강남',                location: '강남', category: 'cat04', date: '2025-06-12', difficulty: 4, fearLevel: 4,    isSuccess: false, notes: '', participants: ['m01','m09','m16','m14'] },
-  { id: 't020', themeName: '콜러',                        cafeName: '제로월드 강남',                location: '강남', category: 'cat04', date: '2025-06-12', difficulty: 4, fearLevel: 4,    isSuccess: false, notes: '', participants: ['m15','m10','m11'] },
-  { id: 't021', themeName: '돈(DONE)',                    cafeName: '제로월드 강남',                location: '강남', category: 'cat08', date: '2025-06-12', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m02','m07','m03'] },
+  { id: 't019', themeName: '링',                          cafeName: '제로월드 강남',                location: '강남', category: 'cat04', date: '2025-06-12', difficulty: 4, fearLevel: 4,    isSuccess: true, notes: '', participants: ['m01','m09','m16','m14'] },
+  { id: 't020', themeName: '콜러',                        cafeName: '제로월드 강남',                location: '강남', category: 'cat04', date: '2025-06-12', difficulty: 4, fearLevel: 4,    isSuccess: true, notes: '', participants: ['m15','m10','m11'] },
+  { id: 't021', themeName: '돈(DONE)',                    cafeName: '제로월드 강남',                location: '강남', category: 'cat08', date: '2025-06-12', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m02','m07','m03'] },
 
   // 회차 10 — 2025-07-10 홍대
-  { id: 't022', themeName: '인형저택 살인사건',           cafeName: '퍼즐팩토리 홍대2호점',         location: '홍대', category: 'cat07', date: '2025-07-10', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m09','m16','m01','m02','m17'] },
-  { id: 't023', themeName: '벚꽃축제 살인사건',           cafeName: '퍼즐팩토리 홍대3호점',         location: '홍대', category: 'cat07', date: '2025-07-10', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m11','m15','m10','m03'] },
+  { id: 't022', themeName: '인형저택 살인사건',           cafeName: '퍼즐팩토리 홍대2호점',         location: '홍대', category: 'cat07', date: '2025-07-10', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m09','m16','m01','m02','m17'] },
+  { id: 't023', themeName: '벚꽃축제 살인사건',           cafeName: '퍼즐팩토리 홍대3호점',         location: '홍대', category: 'cat07', date: '2025-07-10', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m11','m15','m10','m03'] },
 
   // 회차 11 — 2025-08-14 홍대
-  { id: 't024', themeName: '꼬레아우라 (18:40)',          cafeName: '코드케이 홍대점',              location: '홍대', category: 'cat01', date: '2025-08-14', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m11','m12'] },
-  { id: 't025', themeName: '꼬레아우라 (19:30)',          cafeName: '코드케이 홍대점',              location: '홍대', category: 'cat01', date: '2025-08-14', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m17','m15','m10'] },
+  { id: 't024', themeName: '꼬레아우라 (18:40)',          cafeName: '코드케이 홍대점',              location: '홍대', category: 'cat01', date: '2025-08-14', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m11','m12'] },
+  { id: 't025', themeName: '꼬레아우라 (19:30)',          cafeName: '코드케이 홍대점',              location: '홍대', category: 'cat01', date: '2025-08-14', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m17','m15','m10'] },
 
   // 회차 12 — 2025-09-11 강남
-  { id: 't026', themeName: 'LOST KINGDOM',               cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat06', date: '2025-09-11', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m03','m09','m19'] },
-  { id: 't027', themeName: '메아리',                      cafeName: '에피소드 강남점',              location: '강남', category: 'cat04', date: '2025-09-11', difficulty: 4, fearLevel: 4,    isSuccess: false, notes: '', participants: ['m17','m13','m14'] },
-  { id: 't028', themeName: 'TIENTANG CITY',              cafeName: '비트포비아 던전스텔라',        location: '강남', category: 'cat13', date: '2025-09-11', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m02','m07','m15'] },
+  { id: 't026', themeName: 'LOST KINGDOM',               cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat06', date: '2025-09-11', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m03','m09','m19'] },
+  { id: 't027', themeName: '메아리',                      cafeName: '에피소드 강남점',              location: '강남', category: 'cat04', date: '2025-09-11', difficulty: 4, fearLevel: 4,    isSuccess: true, notes: '', participants: ['m17','m13','m14'] },
+  { id: 't028', themeName: 'TIENTANG CITY',              cafeName: '비트포비아 던전스텔라',        location: '강남', category: 'cat13', date: '2025-09-11', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m02','m07','m15'] },
 
   // 회차 13 — 2025-10-16 홍대
-  { id: 't029', themeName: '화생설화',                    cafeName: '던전101',                      location: '홍대', category: 'cat03', date: '2025-10-16', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m02','m22','m07','m03','m12'] },
-  { id: 't030', themeName: '어비스',                      cafeName: '비밀의숲 홍대점',              location: '홍대', category: 'cat05', date: '2025-10-16', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m14','m16','m10'] },
-  { id: 't031', themeName: '퀘스천마크',                  cafeName: '퀘스천마크 홍대점',            location: '홍대', category: 'cat05', date: '2025-10-16', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m21','m19','m11','m18'] },
-  { id: 't032', themeName: '사일런트',                    cafeName: '포인트나인',                   location: '홍대', category: 'cat10', date: '2025-10-16', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m09','m20','m15'] },
+  { id: 't029', themeName: '화생설화',                    cafeName: '던전101',                      location: '홍대', category: 'cat03', date: '2025-10-16', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m02','m22','m07','m03','m12'] },
+  { id: 't030', themeName: '어비스',                      cafeName: '비밀의숲 홍대점',              location: '홍대', category: 'cat05', date: '2025-10-16', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m14','m16','m10'] },
+  { id: 't031', themeName: '퀘스천마크',                  cafeName: '퀘스천마크 홍대점',            location: '홍대', category: 'cat05', date: '2025-10-16', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m21','m19','m11','m18'] },
+  { id: 't032', themeName: '사일런트',                    cafeName: '포인트나인',                   location: '홍대', category: 'cat10', date: '2025-10-16', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m09','m20','m15'] },
 
   // 회차 14 — 2025-11-13 강남
-  { id: 't033', themeName: '엔제리오',                    cafeName: '키이스케이프 강남 더오름',     location: '강남', category: 'cat03', date: '2025-11-13', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m11','m02'] },
-  { id: 't034', themeName: '내 방',                       cafeName: '키이스케이프 강남 스테이션',   location: '강남', category: 'cat09', date: '2025-11-13', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m18','m21'] },
-  { id: 't035', themeName: 'NOSTALGIA VISTA',            cafeName: '키이스케이프 강남 스테이션',   location: '강남', category: 'cat05', date: '2025-11-13', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m10','m14'] },
+  { id: 't033', themeName: '엔제리오',                    cafeName: '키이스케이프 강남 더오름',     location: '강남', category: 'cat03', date: '2025-11-13', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m11','m02'] },
+  { id: 't034', themeName: '내 방',                       cafeName: '키이스케이프 강남 스테이션',   location: '강남', category: 'cat09', date: '2025-11-13', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m18','m21'] },
+  { id: 't035', themeName: 'NOSTALGIA VISTA',            cafeName: '키이스케이프 강남 스테이션',   location: '강남', category: 'cat05', date: '2025-11-13', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m10','m14'] },
 
   // 회차 15 — 2025-12-11 홍대
-  { id: 't036', themeName: '멸종위기종탐사대',            cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat06', date: '2025-12-11', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m02','m14','m20','m10'] },
-  { id: 't037', themeName: '카부트',                      cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat10', date: '2025-12-11', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m21','m16','m15','m05'] },
-  { id: 't038', themeName: '료칸살인사건',                cafeName: '퍼즐팩토리 홍대본점',          location: '홍대', category: 'cat07', date: '2025-12-11', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m09','m22','m11','m08'] },
+  { id: 't036', themeName: '멸종위기종탐사대',            cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat06', date: '2025-12-11', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m02','m14','m20','m10'] },
+  { id: 't037', themeName: '카부트',                      cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat10', date: '2025-12-11', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m21','m16','m15','m05'] },
+  { id: 't038', themeName: '료칸살인사건',                cafeName: '퍼즐팩토리 홍대본점',          location: '홍대', category: 'cat07', date: '2025-12-11', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m09','m22','m11','m08'] },
 
   // 회차 16 — 2026-01-08 강남
-  { id: 't039', themeName: '클레임',                      cafeName: '키이스케이프',                 location: '강남', category: 'cat03', date: '2026-01-08', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m02','m07','m20','m11'] },
-  { id: 't040', themeName: '위시',                        cafeName: '키이스케이프',                 location: '강남', category: 'cat03', date: '2026-01-08', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m09','m03','m21','m10'] },
+  { id: 't039', themeName: '클레임',                      cafeName: '키이스케이프',                 location: '강남', category: 'cat03', date: '2026-01-08', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m02','m07','m20','m11'] },
+  { id: 't040', themeName: '위시',                        cafeName: '키이스케이프',                 location: '강남', category: 'cat03', date: '2026-01-08', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m09','m03','m21','m10'] },
 
   // 회차 17 — 2026-02-12 홍대
-  { id: 't041', themeName: '삼일보육원',                  cafeName: '티켓투이스케이프',             location: '홍대', category: 'cat04', date: '2026-02-12', difficulty: 4, fearLevel: 3,    isSuccess: false, notes: '', participants: ['m14','m20','m09','m07'] },
-  { id: 't042', themeName: '해줘!놈즈',                   cafeName: '티켓투이스케이프',             location: '홍대', category: 'cat09', date: '2026-02-12', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m03','m10','m02','m21','m11'] },
+  { id: 't041', themeName: '삼일보육원',                  cafeName: '티켓투이스케이프',             location: '홍대', category: 'cat04', date: '2026-02-12', difficulty: 4, fearLevel: 3,    isSuccess: true, notes: '', participants: ['m14','m20','m09','m07'] },
+  { id: 't042', themeName: '해줘!놈즈',                   cafeName: '티켓투이스케이프',             location: '홍대', category: 'cat09', date: '2026-02-12', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m03','m10','m02','m21','m11'] },
 
   // 회차 18 — 2026-03-12 강남
-  { id: 't043', themeName: '악마와싸우는자',              cafeName: '겟어웨이',                     location: '강남', category: 'cat04', date: '2026-03-12', difficulty: 3, fearLevel: 1,    isSuccess: false, notes: '', participants: ['m09','m14','m20'] },
-  { id: 't044', themeName: '메가게임(MEGA GAME)',         cafeName: '메가게임',                     location: '강남', category: 'cat12', date: '2026-03-12', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m15','m22','m21'] },
-  { id: 't045', themeName: '조선피자몰',                  cafeName: '플레이더월드 강남점',          location: '강남', category: 'cat09', date: '2026-03-12', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m11','m10','m02'] },
+  { id: 't043', themeName: '악마와싸우는자',              cafeName: '겟어웨이',                     location: '강남', category: 'cat04', date: '2026-03-12', difficulty: 3, fearLevel: 1,    isSuccess: true, notes: '', participants: ['m09','m14','m20'] },
+  { id: 't044', themeName: '메가게임(MEGA GAME)',         cafeName: '메가게임',                     location: '강남', category: 'cat12', date: '2026-03-12', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m15','m22','m21'] },
+  { id: 't045', themeName: '조선피자몰',                  cafeName: '플레이더월드 강남점',          location: '강남', category: 'cat09', date: '2026-03-12', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m11','m10','m02'] },
 
   // 회차 19 — 2026-04-09 홍대
-  { id: 't046', themeName: '게임의 법칙',                 cafeName: '티켓투이스케이프',             location: '홍대', category: 'cat12', date: '2026-04-09', difficulty: 5, fearLevel: null, isSuccess: false, notes: '', participants: ['m11','m03','m10','m02'] },
-  { id: 't047', themeName: '두껍아 두껍아 헌집줄게 새집다오', cafeName: '토끼굴',                  location: '홍대', category: 'cat05', date: '2026-04-09', difficulty: 2, fearLevel: null, isSuccess: false, notes: '', participants: ['m07','m24','m25','m14'] },
-  { id: 't048', themeName: '한라아파트 4동 404호',        cafeName: '쇼룸 404',                     location: '홍대', category: 'cat04', date: '2026-04-09', difficulty: 2, fearLevel: 2,    isSuccess: false, notes: '', participants: ['m20','m09'] },
+  { id: 't046', themeName: '게임의 법칙',                 cafeName: '티켓투이스케이프',             location: '홍대', category: 'cat12', date: '2026-04-09', difficulty: 5, fearLevel: null, isSuccess: true, notes: '', participants: ['m11','m03','m10','m02'] },
+  { id: 't047', themeName: '두껍아 두껍아 헌집줄게 새집다오', cafeName: '토끼굴',                  location: '홍대', category: 'cat05', date: '2026-04-09', difficulty: 2, fearLevel: null, isSuccess: true, notes: '', participants: ['m07','m24','m25','m14'] },
+  { id: 't048', themeName: '한라아파트 4동 404호',        cafeName: '쇼룸 404',                     location: '홍대', category: 'cat04', date: '2026-04-09', difficulty: 2, fearLevel: 2,    isSuccess: true, notes: '', participants: ['m20','m09'] },
 
   // 회차 20 — 2026-05-14 강남
-  { id: 't049', themeName: '마음을 그려드립니다',         cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat11', date: '2026-05-14', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m21','m25','m20'] },
-  { id: 't050', themeName: '대호시장 살인사건',           cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat01', date: '2026-05-14', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m23','m07','m15','m09'] },
-  { id: 't051', themeName: '3일',                         cafeName: '던전루나 강남',                location: '강남', category: 'cat01', date: '2026-05-14', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m02','m11','m26'] },
+  { id: 't049', themeName: '마음을 그려드립니다',         cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat11', date: '2026-05-14', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m21','m25','m20'] },
+  { id: 't050', themeName: '대호시장 살인사건',           cafeName: '비트포비아 강남던전',          location: '강남', category: 'cat01', date: '2026-05-14', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m23','m07','m15','m09'] },
+  { id: 't051', themeName: '3일',                         cafeName: '던전루나 강남',                location: '강남', category: 'cat01', date: '2026-05-14', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m02','m11','m26'] },
 
   // 회차 21 — 2026-06-11 홍대
-  { id: 't052', themeName: '서울의 봄',                   cafeName: '크라임챔버',                   location: '홍대', category: 'cat07', date: '2026-06-11', difficulty: 3, fearLevel: null, isSuccess: false, notes: '', participants: ['m24','m21','m25','m11','m05'] },
-  { id: 't053', themeName: '이미지 세탁소',               cafeName: '홍대던전3',                    location: '홍대', category: 'cat03', date: '2026-06-11', difficulty: 2, fearLevel: null, isSuccess: false, notes: '', participants: ['m10','m20','m03','m02'] },
-  { id: 't054', themeName: '전래동 자살사건',             cafeName: '던전101',                      location: '홍대', category: 'cat01', date: '2026-06-11', difficulty: 4, fearLevel: null, isSuccess: false, notes: '', participants: ['m27','m15','m07','m22'] },
-  { id: 't055', themeName: '문신',                        cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat04', date: '2026-06-11', difficulty: 2, fearLevel: 3,    isSuccess: false, notes: '', participants: ['m09','m26','m14','m23'] },
+  { id: 't052', themeName: '서울의 봄',                   cafeName: '크라임챔버',                   location: '홍대', category: 'cat07', date: '2026-06-11', difficulty: 3, fearLevel: null, isSuccess: true, notes: '', participants: ['m24','m21','m25','m11','m05'] },
+  { id: 't053', themeName: '이미지 세탁소',               cafeName: '홍대던전3',                    location: '홍대', category: 'cat03', date: '2026-06-11', difficulty: 2, fearLevel: null, isSuccess: true, notes: '', participants: ['m10','m20','m03','m02'] },
+  { id: 't054', themeName: '전래동 자살사건',             cafeName: '던전101',                      location: '홍대', category: 'cat01', date: '2026-06-11', difficulty: 4, fearLevel: null, isSuccess: true, notes: '', participants: ['m27','m15','m07','m22'] },
+  { id: 't055', themeName: '문신',                        cafeName: '지구별방탈출 홍대라스트시티',  location: '홍대', category: 'cat04', date: '2026-06-11', difficulty: 2, fearLevel: 3,    isSuccess: true, notes: '', participants: ['m09','m26','m14','m23'] },
 ];

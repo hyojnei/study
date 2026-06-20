@@ -2,7 +2,8 @@ import { createContext, useContext, useReducer, useEffect } from 'react';
 import { DEFAULT_CATEGORIES, DEFAULT_LOCATIONS, SAMPLE_THEMES, SAMPLE_MEMBERS } from '../data/initialData';
 
 const AppContext = createContext(null);
-const STORAGE_KEY   = 'escaperoom_club_v3';
+const STORAGE_KEY   = 'escaperoom_club_v4';
+const LEGACY_KEY_V3 = 'escaperoom_club_v3';
 const LEGACY_KEY_V2 = 'escaperoom_club_v2';
 const LEGACY_KEY_V1 = 'escaperoom_club_v1';
 
@@ -45,8 +46,16 @@ function migrateV2(v2) {
 
 function loadSaved() {
   try {
-    const v3raw = localStorage.getItem(STORAGE_KEY);
-    if (v3raw) return JSON.parse(v3raw);
+    const v4raw = localStorage.getItem(STORAGE_KEY);
+    if (v4raw) return JSON.parse(v4raw);
+
+    const v3raw = localStorage.getItem(LEGACY_KEY_V3);
+    if (v3raw) {
+      const migrated = migrateV2(JSON.parse(v3raw));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+      localStorage.removeItem(LEGACY_KEY_V3);
+      return migrated;
+    }
 
     const v2raw = localStorage.getItem(LEGACY_KEY_V2);
     if (v2raw) {
