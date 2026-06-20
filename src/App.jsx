@@ -13,6 +13,7 @@ import NoticeList from './components/NoticeList';
 import NoticeForm from './components/NoticeForm';
 import NoticeDetail from './components/NoticeDetail';
 import ThemeConvertForm from './components/ThemeConvertForm';
+import Timeline from './components/Timeline';
 
 const MAIN_VIEWS = ['themes', 'notices', 'timeline', 'members', 'settings'];
 
@@ -34,6 +35,7 @@ function AppContent() {
       case 'addNotice':      return <NoticeForm />;
       case 'noticeDetail':   return <NoticeDetail />;
       case 'convertNotice':  return <ThemeConvertForm />;
+      case 'timeline':       return <Timeline />;
       default:               return <ThemeList />;
     }
   };
