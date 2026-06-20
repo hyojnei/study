@@ -6,14 +6,19 @@ import ThemeForm from './components/ThemeForm';
 import MemberList from './components/MemberList';
 import MemberDetail from './components/MemberDetail';
 import MemberForm from './components/MemberForm';
-import CategoryList from './components/CategoryList';
+import Settings from './components/Settings';
 import CategoryForm from './components/CategoryForm';
+import LocationForm from './components/LocationForm';
+import NoticeList from './components/NoticeList';
+import NoticeForm from './components/NoticeForm';
+import NoticeDetail from './components/NoticeDetail';
+import ThemeConvertForm from './components/ThemeConvertForm';
+import Timeline from './components/Timeline';
 
-const MAIN_VIEWS = ['themes', 'members', 'settings'];
+const MAIN_VIEWS = ['themes', 'notices', 'timeline', 'members', 'settings'];
 
 function AppContent() {
   const { state } = useApp();
-  const isMain = MAIN_VIEWS.includes(state.view);
 
   const renderView = () => {
     switch (state.view) {
@@ -23,9 +28,15 @@ function AppContent() {
       case 'members':      return <MemberList />;
       case 'memberDetail': return <MemberDetail />;
       case 'addMember':    return <MemberForm />;
-      case 'settings':     return <CategoryList />;
+      case 'settings':     return <Settings />;
       case 'addCategory':  return <CategoryForm />;
-      default:             return <ThemeList />;
+      case 'addLocation':  return <LocationForm />;
+      case 'notices':        return <NoticeList />;
+      case 'addNotice':      return <NoticeForm />;
+      case 'noticeDetail':   return <NoticeDetail />;
+      case 'convertNotice':  return <ThemeConvertForm />;
+      case 'timeline':       return <Timeline />;
+      default:               return <ThemeList />;
     }
   };
 
@@ -34,7 +45,7 @@ function AppContent() {
       <div className="main-content">
         {renderView()}
       </div>
-      {isMain && <BottomNav />}
+      {MAIN_VIEWS.includes(state.view) && <BottomNav />}
     </div>
   );
 }

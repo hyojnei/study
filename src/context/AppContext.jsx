@@ -1,13 +1,43 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
-import { DEFAULT_CATEGORIES, SAMPLE_THEMES, SAMPLE_MEMBERS } from '../data/initialData';
+import { DEFAULT_CATEGORIES, DEFAULT_LOCATIONS, SAMPLE_THEMES, SAMPLE_MEMBERS } from '../data/initialData';
 
 const AppContext = createContext(null);
-const STORAGE_KEY = 'escaperoom_club_v1';
+const STORAGE_KEY = 'escaperoom_club_v2';
+const LEGACY_KEY  = 'escaperoom_club_v1';
+
+function migrateV1(v1) {
+  return {
+    categories: (v1.categories ?? []).map(({ id, name, color }) => ({ id, name, color })),
+    themes: (v1.themes ?? []).map(t => ({
+      id:           t.id,
+      date:         t.date,
+      notes:        t.notes ?? '',
+      difficulty:   t.difficulty,
+      themeName:    t.name,
+      cafeName:     t.cafe,
+      isSuccess:    t.cleared,
+      participants: t.memberIds ?? [],
+      category:     t.categoryId ?? null,
+      location:     '',
+      fearLevel:    null,
+    })),
+    members:   v1.members ?? [],
+    locations: DEFAULT_LOCATIONS,
+    notices:   [],
+  };
+}
 
 function loadSaved() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    const v1raw = localStorage.getItem(LEGACY_KEY);
+    const v2raw = localStorage.getItem(STORAGE_KEY);
+    if (v1raw && !v2raw) {
+      const migrated = migrateV1(JSON.parse(v1raw));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+      localStorage.removeItem(LEGACY_KEY);
+      return migrated;
+    }
+    if (v2raw) return JSON.parse(v2raw);
   } catch {}
   return null;
 }
@@ -15,12 +45,13 @@ function loadSaved() {
 function getInitialState() {
   const saved = loadSaved();
   return {
-    view: 'themes',
+    view:       'themes',
     selectedId: null,
-    activeCategory: 'all',
     categories: saved?.categories ?? DEFAULT_CATEGORIES,
     themes:     saved?.themes     ?? SAMPLE_THEMES,
     members:    saved?.members    ?? SAMPLE_MEMBERS,
+    locations:  saved?.locations  ?? DEFAULT_LOCATIONS,
+    notices:    saved?.notices    ?? [],
   };
 }
 
@@ -29,52 +60,43 @@ function reducer(state, action) {
     case 'NAVIGATE':
       return { ...state, view: action.view, selectedId: action.selectedId ?? null };
 
-    case 'SET_CATEGORY_FILTER':
-      return { ...state, activeCategory: action.categoryId };
-
     case 'ADD_CATEGORY': {
-      const cat = {
-        id: `cat-${Date.now()}`,
-        name: action.name,
-        color: action.color,
-        emoji: action.emoji,
-      };
+      const cat = { id: `cat-${Date.now()}`, name: action.name, color: action.color };
       return { ...state, categories: [...state.categories, cat], view: 'settings' };
     }
 
     case 'DELETE_CATEGORY': {
       const themes = state.themes.map(t =>
-        t.categoryId === action.id ? { ...t, categoryId: null } : t
+        t.category === action.id ? { ...t, category: null } : t
       );
-      return {
-        ...state,
-        categories: state.categories.filter(c => c.id !== action.id),
-        themes,
-      };
+      return { ...state, categories: state.categories.filter(c => c.id !== action.id), themes };
     }
+
+    case 'ADD_LOCATION':
+      return { ...state, locations: [...state.locations, action.name] };
+
+    case 'DELETE_LOCATION':
+      return { ...state, locations: state.locations.filter(l => l !== action.name) };
 
     case 'ADD_THEME': {
       const theme = {
-        id: `theme-${Date.now()}`,
-        name: action.name,
-        categoryId: action.categoryId || null,
-        cafe: action.cafe,
-        date: action.date,
-        difficulty: action.difficulty,
-        cleared: action.cleared,
-        notes: action.notes,
-        memberIds: action.memberIds,
+        id:           `theme-${Date.now()}`,
+        themeName:    action.themeName,
+        cafeName:     action.cafeName,
+        location:     action.location ?? '',
+        category:     action.category ?? null,
+        date:         action.date,
+        difficulty:   action.difficulty,
+        fearLevel:    action.fearLevel ?? null,
+        isSuccess:    action.isSuccess,
+        notes:        action.notes ?? '',
+        participants: action.participants ?? [],
       };
       return { ...state, themes: [theme, ...state.themes], view: 'themes' };
     }
 
     case 'DELETE_THEME':
-      return {
-        ...state,
-        themes: state.themes.filter(t => t.id !== action.id),
-        view: 'themes',
-        selectedId: null,
-      };
+      return { ...state, themes: state.themes.filter(t => t.id !== action.id), view: 'themes', selectedId: null };
 
     case 'ADD_MEMBER': {
       const member = { id: `member-${Date.now()}`, name: action.name };
@@ -84,15 +106,45 @@ function reducer(state, action) {
     case 'DELETE_MEMBER': {
       const themes = state.themes.map(t => ({
         ...t,
-        memberIds: t.memberIds.filter(mid => mid !== action.id),
+        participants: t.participants.filter(mid => mid !== action.id),
       }));
-      return {
-        ...state,
-        members: state.members.filter(m => m.id !== action.id),
-        themes,
-        view: 'members',
-        selectedId: null,
+      return { ...state, members: state.members.filter(m => m.id !== action.id), themes, view: 'members', selectedId: null };
+    }
+
+    case 'ADD_NOTICE': {
+      const notice = {
+        id:             `notice-${Date.now()}`,
+        date:           action.date,
+        cafeName:       action.cafeName,
+        location:       action.location,
+        plannedThemes:  action.plannedThemes,
+        participantIds: action.participantIds,
+        isCompleted:    false,
       };
+      return { ...state, notices: [notice, ...state.notices], view: 'notices' };
+    }
+
+    case 'DELETE_NOTICE':
+      return { ...state, notices: state.notices.filter(n => n.id !== action.id), view: 'notices', selectedId: null };
+
+    case 'COMPLETE_NOTICE': {
+      const newThemes = action.themes.map((t, i) => ({
+        id:           `theme-${Date.now()}-${i}`,
+        themeName:    t.themeName,
+        cafeName:     action.cafeName,
+        location:     action.location,
+        category:     t.category ?? null,
+        date:         action.date,
+        difficulty:   t.difficulty,
+        fearLevel:    t.fearLevel ?? null,
+        isSuccess:    t.isSuccess,
+        notes:        t.notes ?? '',
+        participants: action.participants,
+      }));
+      const notices = state.notices.map(n =>
+        n.id === action.id ? { ...n, isCompleted: true } : n
+      );
+      return { ...state, themes: [...newThemes, ...state.themes], notices, view: 'notices', selectedId: null };
     }
 
     default:
@@ -104,9 +156,9 @@ export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, null, getInitialState);
 
   useEffect(() => {
-    const { categories, themes, members } = state;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ categories, themes, members }));
-  }, [state.categories, state.themes, state.members]);
+    const { categories, themes, members, locations, notices } = state;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ categories, themes, members, locations, notices }));
+  }, [state.categories, state.themes, state.members, state.locations, state.notices]);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

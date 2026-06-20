@@ -1,33 +1,33 @@
 import { useApp } from '../context/AppContext';
 
+function getMemberKPI(memberId, themes) {
+  const participated = themes.filter(t => t.participants.includes(memberId));
+  const total   = participated.length;
+  const success = participated.filter(t => t.isSuccess).length;
+  const rate    = total > 0 ? Math.round((success / total) * 100) : null;
+  return { total, success, rate };
+}
+
 export default function MemberList() {
   const { state, dispatch } = useApp();
-
-  const sorted = [...state.members].sort((a, b) => a.name.localeCompare(b.name, 'ko'));
 
   return (
     <>
       <header className="page-header">
         <h1>멤버</h1>
-        <button
-          className="btn-icon"
-          title="멤버 추가"
-          onClick={() => dispatch({ type: 'NAVIGATE', view: 'addMember' })}
-        >
+        <button className="btn-icon" onClick={() => dispatch({ type: 'NAVIGATE', view: 'addMember' })}>
           ＋
         </button>
       </header>
 
-      {sorted.length === 0 ? (
+      {state.members.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-icon">👥</div>
-          <p>아직 멤버가 없어요.<br />오른쪽 상단 ＋ 버튼으로 추가해보세요!</p>
+          <p>멤버를 추가해보세요!<br />오른쪽 상단 ＋ 버튼을 눌러주세요.</p>
         </div>
       ) : (
         <div className="card-list">
-          {sorted.map(member => {
-            const themes = state.themes.filter(t => t.memberIds.includes(member.id));
-            const cleared = themes.filter(t => t.cleared).length;
+          {state.members.map(member => {
+            const kpi = getMemberKPI(member.id, state.themes);
             return (
               <div
                 key={member.id}
@@ -37,8 +37,10 @@ export default function MemberList() {
                 <div className="member-avatar">{member.name[0]}</div>
                 <div className="member-info">
                   <div className="member-name">{member.name}</div>
-                  <div className="member-meta">
-                    {themes.length}개 참여 · 성공 {cleared}개
+                  <div className="member-kpi-row">
+                    <span className="kpi-chip">참여 {kpi.total}회</span>
+                    <span className="kpi-chip">성공 {kpi.success}회</span>
+                    <span className="kpi-chip">성공률 {kpi.rate !== null ? kpi.rate + '%' : '-'}</span>
                   </div>
                 </div>
                 <span className="member-arrow">›</span>

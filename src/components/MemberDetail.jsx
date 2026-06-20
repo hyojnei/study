@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import CategoryBadge from './CategoryBadge';
 
+function getMemberKPI(memberId, themes) {
+  const participated = themes.filter(t => t.participants.includes(memberId));
+  const total   = participated.length;
+  const success = participated.filter(t => t.isSuccess).length;
+  const rate    = total > 0 ? Math.round((success / total) * 100) : null;
+  return { total, success, rate, themes: participated };
+}
+
 export default function MemberDetail() {
   const { state, dispatch } = useApp();
   const [confirm, setConfirm] = useState(false);
@@ -9,12 +17,8 @@ export default function MemberDetail() {
   const member = state.members.find(m => m.id === state.selectedId);
   if (!member) return null;
 
-  const themes = state.themes
-    .filter(t => t.memberIds.includes(member.id))
-    .sort((a, b) => b.date.localeCompare(a.date));
-
-  const cleared = themes.filter(t => t.cleared).length;
-  const rate = themes.length > 0 ? Math.round((cleared / themes.length) * 100) : 0;
+  const kpi    = getMemberKPI(member.id, state.themes);
+  const sorted = [...kpi.themes].sort((a, b) => b.date.localeCompare(a.date));
 
   return (
     <>
@@ -27,27 +31,27 @@ export default function MemberDetail() {
 
       <div className="stats-row">
         <div className="stat-card">
-          <div className="stat-value">{themes.length}</div>
+          <div className="stat-value">{kpi.total}</div>
           <div className="stat-label">총 참여</div>
         </div>
         <div className="stat-card">
-          <div className="stat-value">{cleared}</div>
+          <div className="stat-value">{kpi.success}</div>
           <div className="stat-label">탈출 성공</div>
         </div>
         <div className="stat-card">
-          <div className="stat-value">{rate}%</div>
+          <div className="stat-value">{kpi.rate !== null ? kpi.rate + '%' : '-'}</div>
           <div className="stat-label">성공률</div>
         </div>
       </div>
 
       <div className="section-heading" style={{ marginTop: 14 }}>참여 기록</div>
       <div className="detail-card" style={{ marginBottom: 12 }}>
-        {themes.length === 0 ? (
+        {sorted.length === 0 ? (
           <p className="notes-block" style={{ color: 'var(--text-tertiary)' }}>
             참여한 테마가 없습니다.
           </p>
         ) : (
-          themes.map(theme => (
+          sorted.map(theme => (
             <div
               key={theme.id}
               className="history-item"
@@ -55,11 +59,13 @@ export default function MemberDetail() {
               onClick={() => dispatch({ type: 'NAVIGATE', view: 'themeDetail', selectedId: theme.id })}
             >
               <span className="history-date">{theme.date}</span>
-              <span className="history-name">{theme.name}</span>
-              <CategoryBadge categoryId={theme.categoryId} />
-              <span className={`result-badge ${theme.cleared ? 'success' : 'fail'}`}
-                style={{ fontSize: 10, padding: '2px 6px', marginLeft: 4 }}>
-                {theme.cleared ? '성공' : '실패'}
+              <span className="history-name">{theme.themeName}</span>
+              <CategoryBadge categoryId={theme.category} />
+              <span
+                className={`result-badge ${theme.isSuccess ? 'success' : 'fail'}`}
+                style={{ fontSize: 10, padding: '2px 6px', marginLeft: 4 }}
+              >
+                {theme.isSuccess ? '성공' : '실패'}
               </span>
             </div>
           ))

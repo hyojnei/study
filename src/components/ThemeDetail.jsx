@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import CategoryBadge from './CategoryBadge';
 
-const STARS = [1, 2, 3, 4, 5];
-
 export default function ThemeDetail() {
   const { state, dispatch } = useApp();
   const [confirm, setConfirm] = useState(false);
@@ -11,11 +9,8 @@ export default function ThemeDetail() {
   const theme = state.themes.find(t => t.id === state.selectedId);
   if (!theme) return null;
 
-  const participants = state.members.filter(m => theme.memberIds.includes(m.id));
-
-  const handleDelete = () => {
-    dispatch({ type: 'DELETE_THEME', id: theme.id });
-  };
+  const isHorror     = state.categories.find(c => c.id === theme.category)?.name === '공포';
+  const participants = state.members.filter(m => theme.participants.includes(m.id));
 
   return (
     <>
@@ -23,14 +18,13 @@ export default function ThemeDetail() {
         <button className="btn-icon" onClick={() => dispatch({ type: 'NAVIGATE', view: 'themes' })}>
           ←
         </button>
-        <h1>{theme.name}</h1>
+        <h1>{theme.themeName}</h1>
       </header>
 
-      {/* Hero badge row */}
       <div style={{ padding: '14px 16px 0', display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        <CategoryBadge categoryId={theme.categoryId} />
-        <span className={`result-badge ${theme.cleared ? 'success' : 'fail'}`}>
-          {theme.cleared ? '✓ 탈출 성공' : '✗ 실패'}
+        <CategoryBadge categoryId={theme.category} />
+        <span className={`result-badge ${theme.isSuccess ? 'success' : 'fail'}`}>
+          {theme.isSuccess ? '탈출 성공' : '탈출 실패'}
         </span>
       </div>
 
@@ -38,7 +32,11 @@ export default function ThemeDetail() {
       <div className="detail-card">
         <div className="detail-row">
           <span className="detail-row-label">카페</span>
-          <span className="detail-row-value">{theme.cafe}</span>
+          <span className="detail-row-value">{theme.cafeName}</span>
+        </div>
+        <div className="detail-row">
+          <span className="detail-row-label">지역</span>
+          <span className="detail-row-value">{theme.location || '-'}</span>
         </div>
         <div className="detail-row">
           <span className="detail-row-label">날짜</span>
@@ -47,9 +45,17 @@ export default function ThemeDetail() {
         <div className="detail-row">
           <span className="detail-row-label">난이도</span>
           <span className="detail-row-value">
-            {STARS.map(s => s <= theme.difficulty ? '★' : '☆').join('')}
+            {'★'.repeat(theme.difficulty)}{'☆'.repeat(5 - theme.difficulty)}
           </span>
         </div>
+        {isHorror && theme.fearLevel != null && (
+          <div className="detail-row">
+            <span className="detail-row-label">공포도</span>
+            <span className="detail-row-value">
+              {'★'.repeat(theme.fearLevel)}{'☆'.repeat(5 - theme.fearLevel)}
+            </span>
+          </div>
+        )}
       </div>
 
       {theme.notes ? (
@@ -87,10 +93,12 @@ export default function ThemeDetail() {
         <div className="confirm-overlay" onClick={() => setConfirm(false)}>
           <div className="confirm-sheet" onClick={e => e.stopPropagation()}>
             <p className="confirm-title">테마를 삭제할까요?</p>
-            <p className="confirm-body">"{theme.name}" 기록이 영구적으로 삭제됩니다.</p>
+            <p className="confirm-body">"{theme.themeName}" 기록이 영구적으로 삭제됩니다.</p>
             <div className="confirm-actions">
               <button className="btn-cancel" onClick={() => setConfirm(false)}>취소</button>
-              <button className="btn-confirm-danger" onClick={handleDelete}>삭제</button>
+              <button className="btn-confirm-danger" onClick={() => dispatch({ type: 'DELETE_THEME', id: theme.id })}>
+                삭제
+              </button>
             </div>
           </div>
         </div>
