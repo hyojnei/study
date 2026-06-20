@@ -108,18 +108,16 @@ body {
   background: none;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
   color: var(--text-tertiary);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10.5px;
+  font-weight: 700;
   transition: color 0.15s;
-  padding-bottom: 4px;
+  padding: 0 2px;
+  letter-spacing: -0.01em;
 }
 .nav-tab.active { color: var(--accent); }
-.nav-tab .tab-icon { font-size: 23px; line-height: 1; }
 
 /* ── Category badge ── */
 .category-badge {

@@ -9,7 +9,7 @@ import MemberForm from './components/MemberForm';
 import CategoryList from './components/CategoryList';
 import CategoryForm from './components/CategoryForm';
 
-const MAIN_VIEWS = ['themes', 'members', 'settings'];
+const MAIN_VIEWS = ['themes', 'notices', 'timeline', 'members', 'settings'];
 
 function AppContent() {
   const { state } = useApp();
