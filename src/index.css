@@ -680,3 +680,49 @@ body {
 }
 .option-item-name { flex: 1; font-size: 15px; font-weight: 600; }
 .option-item-count { font-size: 13px; color: var(--text-tertiary); font-weight: 600; }
+
+/* ── Filter bar ── */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+.filter-select {
+  flex-shrink: 0;
+  padding: 7px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--app-bg);
+  cursor: pointer;
+  outline: none;
+}
+
+/* ── Theme card stats ── */
+.theme-card-stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.fear-stat { color: #b91c1c; }
+
+/* ── Location badge ── */
+.location-badge {
+  display: inline-flex;
+  padding: 2px 8px;
+  background: #f3f4f6;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
