@@ -9,6 +9,8 @@ import MemberForm from './components/MemberForm';
 import Settings from './components/Settings';
 import CategoryForm from './components/CategoryForm';
 import LocationForm from './components/LocationForm';
+import NoticeList from './components/NoticeList';
+import NoticeForm from './components/NoticeForm';
 
 const MAIN_VIEWS = ['themes', 'notices', 'timeline', 'members', 'settings'];
 
@@ -26,6 +28,8 @@ function AppContent() {
       case 'settings':     return <Settings />;
       case 'addCategory':  return <CategoryForm />;
       case 'addLocation':  return <LocationForm />;
+      case 'notices':      return <NoticeList />;
+      case 'addNotice':    return <NoticeForm />;
       default:             return <ThemeList />;
     }
   };
