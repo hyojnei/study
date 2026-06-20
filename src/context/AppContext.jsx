@@ -58,10 +58,9 @@ function loadSaved() {
 
     const v3raw = localStorage.getItem(LEGACY_KEY_V3);
     if (v3raw) {
-      const migrated = migrateV3(JSON.parse(v3raw));
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+      // v3 데이터는 샘플 데이터이므로 버리고 initialData(실데이터)로 새로 시작
       localStorage.removeItem(LEGACY_KEY_V3);
-      return migrated;
+      return null;
     }
 
     const v2raw = localStorage.getItem(LEGACY_KEY_V2);
