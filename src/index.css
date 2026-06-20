@@ -632,3 +632,51 @@ body {
   cursor: pointer;
   color: white;
 }
+
+/* ── Settings tabs ── */
+.settings-tab-bar {
+  display: flex;
+  border-bottom: 2px solid var(--border);
+  background: var(--card-bg);
+}
+.settings-tab {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+}
+.settings-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── Option list (위치·장르) ── */
+.option-list-wrap { padding-bottom: 32px; }
+.option-list-header {
+  padding: 14px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-small {
+  padding: 9px 16px;
+  font-size: 14px;
+  width: auto;
+}
+.option-item {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.option-item-name { flex: 1; font-size: 15px; font-weight: 600; }
+.option-item-count { font-size: 13px; color: var(--text-tertiary); font-weight: 600; }

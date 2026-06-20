@@ -6,14 +6,14 @@ import ThemeForm from './components/ThemeForm';
 import MemberList from './components/MemberList';
 import MemberDetail from './components/MemberDetail';
 import MemberForm from './components/MemberForm';
-import CategoryList from './components/CategoryList';
+import Settings from './components/Settings';
 import CategoryForm from './components/CategoryForm';
+import LocationForm from './components/LocationForm';
 
 const MAIN_VIEWS = ['themes', 'notices', 'timeline', 'members', 'settings'];
 
 function AppContent() {
   const { state } = useApp();
-  const isMain = MAIN_VIEWS.includes(state.view);
 
   const renderView = () => {
     switch (state.view) {
@@ -23,8 +23,9 @@ function AppContent() {
       case 'members':      return <MemberList />;
       case 'memberDetail': return <MemberDetail />;
       case 'addMember':    return <MemberForm />;
-      case 'settings':     return <CategoryList />;
+      case 'settings':     return <Settings />;
       case 'addCategory':  return <CategoryForm />;
+      case 'addLocation':  return <LocationForm />;
       default:             return <ThemeList />;
     }
   };
@@ -34,7 +35,7 @@ function AppContent() {
       <div className="main-content">
         {renderView()}
       </div>
-      {isMain && <BottomNav />}
+      {MAIN_VIEWS.includes(state.view) && <BottomNav />}
     </div>
   );
 }
