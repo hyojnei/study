@@ -44,6 +44,13 @@ function migrateV2(v2) {
   };
 }
 
+function migrateV3(v3) {
+  return {
+    ...migrateV2(v3),
+    themes: (v3.themes ?? []).map(t => ({ ...t, isSuccess: true })),
+  };
+}
+
 function loadSaved() {
   try {
     const v4raw = localStorage.getItem(STORAGE_KEY);
@@ -51,7 +58,7 @@ function loadSaved() {
 
     const v3raw = localStorage.getItem(LEGACY_KEY_V3);
     if (v3raw) {
-      const migrated = migrateV2(JSON.parse(v3raw));
+      const migrated = migrateV3(JSON.parse(v3raw));
       localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
       localStorage.removeItem(LEGACY_KEY_V3);
       return migrated;
