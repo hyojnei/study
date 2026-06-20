@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 
 function getMemberKPI(memberId, themes) {
@@ -8,8 +9,27 @@ function getMemberKPI(memberId, themes) {
   return { total, success, rate };
 }
 
+function getStatusClass(status) {
+  if (!status || status === '활동중') return 'active';
+  if (status.startsWith('퇴사')) return 'resigned';
+  return 'quit';
+}
+
+function getScaredClass(isScared) {
+  if (isScared === '쫄') return 'jjol';
+  if (isScared === '탱') return 'tank';
+  if (isScared === '쫄탱') return 'both';
+  return 'unknown';
+}
+
 export default function MemberList() {
   const { state, dispatch } = useApp();
+
+  const sorted = useMemo(() => {
+    const active   = state.members.filter(m => !m.status || m.status === '활동중');
+    const inactive = state.members.filter(m => m.status && m.status !== '활동중');
+    return [...active, ...inactive];
+  }, [state.members]);
 
   return (
     <>
@@ -20,13 +40,13 @@ export default function MemberList() {
         </button>
       </header>
 
-      {state.members.length === 0 ? (
+      {sorted.length === 0 ? (
         <div className="empty-state">
           <p>멤버를 추가해보세요!<br />오른쪽 상단 ＋ 버튼을 눌러주세요.</p>
         </div>
       ) : (
         <div className="card-list">
-          {state.members.map(member => {
+          {sorted.map(member => {
             const kpi = getMemberKPI(member.id, state.themes);
             return (
               <div
@@ -36,7 +56,16 @@ export default function MemberList() {
               >
                 <div className="member-avatar">{member.name[0]}</div>
                 <div className="member-info">
-                  <div className="member-name">{member.name}</div>
+                  <div className="member-name-row">
+                    <span className="member-name">{member.name}</span>
+                    {member.isScared && member.isScared !== '?' && (
+                      <span className={`scared-badge ${getScaredClass(member.isScared)}`}>{member.isScared}</span>
+                    )}
+                    <span className={`member-status ${getStatusClass(member.status)}`}>
+                      {member.status || '활동중'}
+                    </span>
+                  </div>
+                  {member.team && <div className="member-team-name">{member.team}</div>}
                   <div className="member-kpi-row">
                     <span className="kpi-chip">참여 {kpi.total}회</span>
                     <span className="kpi-chip">성공 {kpi.success}회</span>
